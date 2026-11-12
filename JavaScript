@@ -1,0 +1,45 @@
+function verificarEvento() {
+    // 1. Pegar os valores digitados nos campos e transformar em números inteiros
+    // O "|| 0" serve para considerar zero caso o usuário deixe o campo vazio
+    let alunos = parseInt(document.getElementById("alunos").value) || 0;
+    let monitores = parseInt(document.getElementById("monitores").value) || 0;
+    let convidados = parseInt(document.getElementById("convidados").value) || 0;
+
+    // Pegar o elemento onde vamos mostrar a mensagem
+    let caixaResultado = document.getElementById("resultado");
+
+    // 2. Calcular o total de pessoas
+    let totalPessoas = alunos + monitores + convidados;
+
+    // 3. Verificar se algum número negativo foi digitado
+    if (alunos < 0 || monitores < 0 || convidados < 0) {
+        caixaResultado.style.backgroundColor = "#f8d7da";
+        caixaResultado.style.color = "#721c24";
+        caixaResultado.innerText = "Erro: Por favor, digite apenas números positivos.";
+        return; // Para a execução da função aqui
+    }
+
+    // 4. Verificar as regras do evento (Máximo 100 ingressos e Máximo 20 convidados)
+    if (totalPessoas > 100 && convidados > 20) {
+        caixaResultado.style.backgroundColor = "#f8d7da";
+        caixaResultado.style.color = "#721c24";
+        caixaResultado.innerText = `Evento não aprovado! O total de ${totalPessoas} pessoas ultrapassa os 100 ingressos E há ${convidados} convidados (máximo permitido é 20).`;
+    
+    } else if (totalPessoas > 100) {
+        caixaResultado.style.backgroundColor = "#f8d7da";
+        caixaResultado.style.color = "#721c24";
+        caixaResultado.innerText = `Limite de ingressos excedido! O total deu ${totalPessoas} pessoas, mas só existem 100 ingressos.`;
+    
+    } else if (convidados > 20) {
+        caixaResultado.style.backgroundColor = "#fff3cd";
+        caixaResultado.style.color = "#856404";
+        caixaResultado.innerText = `Regra da direção violada! O total de pessoas (${totalPessoas}) cabe nos ingressos, mas há ${convidados} convidados (o limite é 20).`;
+    
+    } else {
+        // Se passou por todas as verificações acima, está tudo certo!
+        let ingressosRestantes = 100 - totalPessoas;
+        caixaResultado.style.backgroundColor = "#d4edda";
+        caixaResultado.style.color = "#155724";
+        caixaResultado.innerText = `Tudo certo! Total de ${totalPessoas} pessoas confirmadas (sobrou ${ingressosRestantes} ingressos).`;
+    }
+}
