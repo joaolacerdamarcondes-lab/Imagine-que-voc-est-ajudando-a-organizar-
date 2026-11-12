@@ -1,0 +1,19 @@
+# 🎟️ Controle de Ingressos - Evento Escolar
+
+Projeto desenvolvido para praticar lógica de programação e estruturas condicionais (`if / else`) em JavaScript.
+
+## 📋 Regras do Problema
+Para que o evento da escola aconteça, o sistema precisa validar duas condições:
+1. O número total de participantes (**Alunos + Monitores + Convidados**) não pode ultrapassar **100 ingressos**.
+2. O número de **Convidados** não pode ser maior que **20**, mesmo que ainda existam ingressos sobrando.
+
+## 🚀 Tecnologias Utilizadas
+* **HTML5:** Estrutura da página e campos de entrada.
+* **CSS3:** Estilização básica e feedback visual (cores de alerta e sucesso).
+* **JavaScript:** Lógica de cálculo e validação das regras.
+
+## 💻 Como executar o projeto
+1. Baixe ou copie os arquivos `index.html` e `script.js` para a mesma pasta no seu computador.
+2. Dê um duplo clique no arquivo `index.html`.
+3. O projeto abrirá diretamente no seu navegador de internet.
+4. Preencha os campos e clique em **Verificar Ingressos**.
