@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Evento Escolar - Controle de Ingressos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .caixa {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #mensagem {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="caixa">
+    <h2>Ingressos do Evento</h2>
+
+    <!-- Campos para digitar as quantidades -->
+    <label>Alunos:</label>
+    <input type="number" id="alunos" placeholder="0">
+
+    <label>Monitores:</label>
+    <input type="number" id="monitores" placeholder="0">
+
+    <label>Convidados:</label>
+    <input type="number" id="convidados" placeholder="0">
+
+    <!-- Botão que chama a função -->
+    <button onclick="verificar()">Verificar</button>
+
+    <!-- Local onde o resultado vai aparecer -->
+    <div id="mensagem"></div>
+</div>
+
+<script>
+    function verificar() {
+        // Lê os valores digitados
+        let alunos = Number(document.getElementById("alunos").value);
+        let monitores = Number(document.getElementById("monitores").value);
+        let convidados = Number(document.getElementById("convidados").value);
+
+        // Soma o total de pessoas
+        let total = alunos + monitores + convidados;
+        let msg = document.getElementById("mensagem");
+
+        // Verifica as regras
+        if (total > 100 && convidados > 20) {
+            msg.style.backgroundColor = "#ffcccc";
+            msg.innerText = "Erro: Ultrapassou 100 ingressos e o limite de 20 convidados!";
+        } 
+        else if (total > 100) {
+            msg.style.backgroundColor = "#ffcccc";
+            msg.innerText = "Erro: O total de " + total + " pessoas passa dos 100 ingressos.";
+        } 
+        else if (convidados > 20) {
+            msg.style.backgroundColor = "#fff3cd";
+            msg.innerText = "Erro: Máximo de 20 convidados permitido pela direção.";
+        } 
+        else {
+            msg.style.backgroundColor = "#d4edda";
+            msg.innerText = "Sucesso! Total de " + total + " pessoas confirmadas.";
+        }
+    }
+</script>
+
+</body>
+</html>
